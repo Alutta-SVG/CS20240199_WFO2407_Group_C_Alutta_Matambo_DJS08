@@ -28,6 +28,7 @@ import Reviews from "./Components/Host/Reviews";
 import AuthRequired from "./Components/AuthRequired";
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
