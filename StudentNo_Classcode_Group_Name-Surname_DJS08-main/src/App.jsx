@@ -13,6 +13,7 @@
  * Review challenge: do all the CSS yourself based on the design
  * linked in the slides.
  */
+
 import React from "react"
 import { Link, useParams, useLocation } from "react-router-dom"
 import { getVan } from "../../api"
@@ -22,7 +23,7 @@ export default function VanDetail() {
     const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
     const { id } = useParams()
-    const location = useLocation()
+ 
 
     React.useEffect(() => {
         async function loadVans() {
