@@ -22,9 +22,9 @@ import About from "./About";
 import Vans from "../Vans/Vans";
 import VanDetail from "../Vans/Vansdetail";
 import HostLayout from "./Components/HostLayout";   
-import Dashboard from "./";
-import Income from "";
-import Reviews from "";
+import Dashboard from "./Components/Host/Dashboard";
+import Income from "./Components/Host/Income";
+import Reviews from "./Components/Host/Reviews";
 import AuthRequired from "./Components/AuthRequired";
 
 function App() {
