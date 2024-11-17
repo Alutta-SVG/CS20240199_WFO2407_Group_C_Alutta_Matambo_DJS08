@@ -16,16 +16,16 @@
 
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import Layout from "./Components/layout.jsx";
+import Home from "./Home.jsx";
+import About from "./About.jsx";
 import Vans from "./pages/Vans";
 import VanDetail from "./pages/VanDetail";
 import HostLayout from "./components/HostLayout";
 import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
-import AuthRequired from "./components/AuthRequired";
+import AuthRequired from "./Components/AuthRequired.jsx";
 
 function App() {
   return (
