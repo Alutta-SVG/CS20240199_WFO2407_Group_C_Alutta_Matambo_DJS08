@@ -13,12 +13,32 @@
  * Review challenge: do all the CSS yourself based on the design
  * linked in the slides.
  */
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
 
 function App() {
 
   return (
-    <h1>Start here</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+          
+          <Route path="host" element={<HostLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
 export default App
+ 
