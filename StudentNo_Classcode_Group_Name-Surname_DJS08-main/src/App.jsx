@@ -26,17 +26,19 @@ import Dashboard from "./Components/Host/Dashboard";
 import Income from "./Components/Host/Income";
 import Reviews from "./Components/Host/Reviews";
 import AuthRequired from "./Components/AuthRequired";
+import Login from "./login";
 
 function App() {
-  
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
+          <Route path="vans" element={<Vans />} /> {/* Vans route outside /host */}
           <Route path="vans/:id" element={<VanDetail />} />
+          <Route path="login" element={<Login />} />
+          
           <Route element={<AuthRequired />}>
             <Route path="host" element={<HostLayout />}>
               <Route index element={<Dashboard />} />
