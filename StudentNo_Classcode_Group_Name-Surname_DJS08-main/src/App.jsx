@@ -14,63 +14,39 @@
  * linked in the slides.
  */
 
-import React from "react"
-import { Link, useParams, useLocation } from "react-router-dom"
-import { getVan } from "../../api"
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Vans from "./pages/Vans";
+import VanDetail from "./pages/VanDetail";
+import HostLayout from "./components/HostLayout";
+import Dashboard from "./pages/host/Dashboard";
+import Income from "./pages/host/Income";
+import Reviews from "./pages/host/Reviews";
+import AuthRequired from "./components/AuthRequired";
 
-export default function VanDetail() {
-    const [van, setVan] = React.useState(null)
-    const [loading, setLoading] = React.useState(false)
-    const [error, setError] = React.useState(null)
-    const { id } = useParams()
- 
-
-    React.useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVan(id)
-                setVan(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadVans()
-    }, [id])
-    
-    if (loading) {
-        return <h1>Loading...</h1>
-    }
-    
-    if (error) {
-        return <h1>There was an error: {error.message}</h1>
-    }
-
-    const search = location.state?.search || "";
-    const type = location.state?.type || "all";
-    
-    return (
-        <div className="van-detail-container">
-            <Link
-                to={`..${search}`}
-                relative="path"
-                className="back-button"
-            >&larr; <span>Back to {type} vans</span></Link>
-            
-            {van && (
-                <div className="van-detail">
-                    <img src={van.imageUrl} />
-                    <i className={`van-type ${van.type} selected`}>
-                        {van.type}
-                    </i>
-                    <h2>{van.name}</h2>
-                    <p className="van-price"><span>${van.price}</span>/day</p>
-                    <p>{van.description}</p>
-                    <button className="link-button">Rent this van</button>
-                </div>
-            )}
-        </div>
-    )
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+          <Route element={<AuthRequired />}>
+            <Route path="host" element={<HostLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
+
+export default App;
